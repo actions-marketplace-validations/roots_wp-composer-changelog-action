@@ -1,5 +1,5 @@
-name: 'WP Composer Changelog Action'
-description: 'Automatically comment WordPress plugin changelogs on pull requests when WP Composer dependencies change'
+name: 'WP Packages Changelog Action'
+description: 'Automatically comment WordPress plugin changelogs on pull requests when WP Packages dependencies change'
 author: 'Roots Software LLC'
 branding:
   icon: 'package'
@@ -30,7 +30,7 @@ runs:
       with:
         github-token: ${{ inputs.token }}
         script: |
-          const MARKER = '<!-- wp-composer-changelog-bot -->';
+          const MARKER = '<!-- wp-packages-changelog-bot -->';
           let pluginsMap = new Map();
 
           let page = 1;
@@ -94,7 +94,7 @@ runs:
           const plugins = [...pluginsMap.keys()].sort();
 
           if (plugins.length === 0) {
-            console.log('No WP Composer plugins changed');
+            console.log('No WP Packages plugins changed');
             return;
           }
 
